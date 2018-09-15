@@ -1,0 +1,18 @@
+html
+  head
+    title redisred 404
+    link(rel="stylesheet", href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css")
+  body
+    div.container
+      h1(style="color: #d43f3a; font-size: 12em; text-align: center;") 404
+      h2(style="font-size: 5em; text-align: center; line-height: 2em;")
+        form(action="/admin/redirect/create", method="POST")
+          input(type="hidden", name="_csrf", value=token)
+          span.col-sm-2
+            input.form-control(name="key", value=urlPath)
+          span.col-sm-7
+            input.form-control(name="url", placeholder="https://")
+          span.col-sm-2(colspan=2)
+            button.btn.btn-danger.btn-block Create
+        br
+        small(style="font-size: 0.2em") The specified redirect could not be found

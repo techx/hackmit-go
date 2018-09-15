@@ -9,7 +9,10 @@ module.exports = function(redis) {
       if (err)
         res.status(500).send(err);
       else if (!redirect)
-        res.status(404).render('404');
+        if (req.isAuthenticated())
+          res.render('create', {urlPath: redirectName, token: req.csrfToken()});
+        else
+          res.status(404).render('404');
       else
         res.redirect(redirect.url);
     });
